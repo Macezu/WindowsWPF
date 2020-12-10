@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NotePad"
+        xmlns:p="clr-namespace:NotePad.Properties"
         xmlns:media ="clr-namespace:System.Windows.Media;assembly=PresentationCore"
         xmlns:win="clr-namespace:System.Windows;assembly=PresentationCore"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -52,7 +53,7 @@
         </Grid.ColumnDefinitions>
 
         <DockPanel Grid.Row="0" Grid.Column="0">
-            <TextBlock DockPanel.Dock="Top">FontFamily</TextBlock>
+            <TextBlock Text="{x:Static p:Resources.FontFamily}"  DockPanel.Dock="Top" ></TextBlock>
             <ListBox ItemsSource="{Binding Source={StaticResource FontFamilyOptions}}"
                      SelectedItem="{Binding Family}"
                      SelectedIndex="0">
@@ -65,21 +66,21 @@
         </DockPanel>
 
         <DockPanel Grid.Row="0" Grid.Column="1">
-            <TextBlock DockPanel.Dock="Top">Font Size</TextBlock>
+            <TextBlock Text="{x:Static p:Resources.FontSize}" DockPanel.Dock="Top"></TextBlock>
             <ListBox ItemsSource="{Binding Source={StaticResource FontSizeOptions}}"
                      SelectedItem="{Binding Size}"
                      SelectedIndex="0"/>
         </DockPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <TextBlock>Font Styles</TextBlock>
+            <TextBlock Text="{x:Static p:Resources.FontStyles}"></TextBlock>
             <ComboBox ItemsSource="{Binding Source={StaticResource FontStyleOptions}}"
                       SelectedItem="{Binding Style}"
                       SelectedIndex="0"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <TextBlock>Font Weight</TextBlock>
+            <TextBlock Text="{x:Static p:Resources.FontWeight}"></TextBlock>
             <ComboBox ItemsSource="{Binding Source={StaticResource FontWeightOptions}}"
                       SelectedItem="{Binding Weight}"
                       SelectedIndex="0"/>

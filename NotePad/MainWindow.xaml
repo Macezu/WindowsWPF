@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NotePad"
         xmlns:viewmodels="clr-namespace:NotePad.ViewModels"
+        xmlns:p="clr-namespace:NotePad.Properties"
         mc:Ignorable="d"
         Title="WPFNotepad" Height="450" Width="800">
     <Window.DataContext>
@@ -13,19 +14,19 @@
     <DockPanel Margin="1">
         <Menu DockPanel.Dock="Top">
             <Menu.Items>
-                <MenuItem Header="File" DataContext="{Binding File}">
-                    <MenuItem Header="New" Command="{Binding NewCommand}"/>
-                    <MenuItem Header="Open" Command="{Binding OpenCommand}"/>
-                    <MenuItem Header="Save" Command="{Binding SaveCommand}"/>
-                    <MenuItem Header="SaveAs..." Command="{Binding SaveAsCommand}"/>
-                    <MenuItem Header="Print" Command="{Binding PrintCommand}"/>
+                <MenuItem Header="{x:Static p:Resources.File}" DataContext="{Binding File}">
+                    <MenuItem Header="{x:Static p:Resources.New}" Command="{Binding NewCommand}"/>
+                        <MenuItem Header="{x:Static p:Resources.Open}" Command="{Binding OpenCommand}"/>
+                        <MenuItem Header="{x:Static p:Resources.Save}" Command="{Binding SaveCommand}"/>
+                        <MenuItem Header="{x:Static p:Resources.SaveAs}" Command="{Binding SaveAsCommand}"/>
+                        <MenuItem Header="{x:Static p:Resources.Print}" Command="{Binding PrintCommand}"/>
                 </MenuItem>
-                <MenuItem Header="Format" DataContext="{Binding Editor}">
-                    <MenuItem Header="Format" Command="{Binding FormatCommand}"/>
-                    <MenuItem Header="Word wrap" Command="{Binding WrapCommand}"/>
+                <MenuItem Header="{x:Static p:Resources.Format}" DataContext="{Binding Editor}">
+                    <MenuItem Header="{x:Static p:Resources.Format}" Command="{Binding FormatCommand}"/>
+                    <MenuItem Header="{x:Static p:Resources.WordWrap}" Command="{Binding WrapCommand}"/>
                 </MenuItem>
-                <MenuItem Header="Help" DataContext="{Binding Help}">
-                    <MenuItem Header="About" Command="{Binding HelpCommand}"/>
+                <MenuItem Header="{x:Static p:Resources.Help}" DataContext="{Binding Help}">
+                    <MenuItem Header="{x:Static p:Resources.About}" Command="{Binding HelpCommand}"/>
                 </MenuItem>
             </Menu.Items>
         </Menu>

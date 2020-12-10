@@ -22,7 +22,11 @@ namespace NotePad
     {
         public MainWindow()
         {
+            System.Threading.Thread.CurrentThread.CurrentUICulture =
+            new System.Globalization.CultureInfo("fi-FI");
+
             InitializeComponent();
+            Title = Properties.Resources.Title;
         }
     }
 }
