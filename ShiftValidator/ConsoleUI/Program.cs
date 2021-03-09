@@ -11,10 +11,9 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-
-            var shift = new Shift("12:00-16:00");
+            var shift = new Shift("01:00-17:00", DateTime.Now);
             Console.WriteLine(shift.ClockedShift);
-            System.Threading.Thread.Sleep(2500);
+            Console.ReadLine();
         }
     }
 }
