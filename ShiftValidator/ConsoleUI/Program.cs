@@ -11,8 +11,21 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            var shift = new Shift("01:00-17:00", DateTime.Now);
-            Console.WriteLine(shift.ClockedShift);
+            Shift shift;
+            while (true)
+            {
+                Console.WriteLine("Hello employee please input your latest shift in HH:mm-HH:mm format");
+                string employeeInput = Console.ReadLine();
+                shift = new Shift(employeeInput, DateTime.Now);
+                if (!(shift.ClockedShift is null)){break;}
+                else{ Console.WriteLine("The Input given was not in valid form \n"); }
+            }
+
+            Console.WriteLine("Shift was saved");
+            Console.WriteLine("Would you like to view your latest shift? Y/N");
+            var answer = Console.ReadLine();
+            var returningString = answer == "y" || answer == "Y" ? $"Your last shift duration was: { (shift.getShift().ToString())} hours" :"Thank You";
+            Console.WriteLine(returningString);
             Console.ReadLine();
         }
     }
