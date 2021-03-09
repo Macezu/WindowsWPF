@@ -60,8 +60,7 @@ namespace HelperLibrary
             var shiftStart = convertToTimeSpan(splitted[0]);
             var shiftEnd = convertToTimeSpan(splitted[1]);
             var duration = shiftEnd - shiftStart;
-            return duration.TotalHours;
-
+            return Math.Round(duration.TotalHours,2);
 
         }
 
