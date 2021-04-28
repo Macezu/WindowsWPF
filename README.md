@@ -1,5 +1,5 @@
 # WindowsWPF
-Programs made 4 Windows
+Apps and tools made with Visual Studio using CSharp
 
 _CalCulator_  -A simple calculator. Operations that finish as a negative numbers wiil end calculation.
 
