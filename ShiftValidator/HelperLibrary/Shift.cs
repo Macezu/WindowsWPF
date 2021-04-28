@@ -10,14 +10,25 @@ namespace HelperLibrary
 {
     public class Shift
     {
-        private string _clockedShift;
+        private TimeSpan _clockedShift;
         private DateTime _dateTime { get; set; }
 
         public string ClockedShift
         {
-            get => _clockedShift;
+            get => _clockedShift.ToString();
             // Is the given value valid?
-            set => _clockedShift = validateFormat(value) ? value : null;
+            set {
+                try
+                {
+                    validateFormat(value);
+                } catch (ArgumentException)
+                {
+                    throw new ArgumentException("value vas not in correct format", nameof(value));
+                }
+                
+                   
+
+            }
         }
 
 
@@ -31,32 +42,34 @@ namespace HelperLibrary
         // Validate the formality of the given shift
         private bool validateFormat(string value)
         {
-            var regex = ("^([01]?[0-9]|2[0-3]):([0-5][0-9])-([01]?[0-9]|2[0-3]):([0-5][0-9])$");
-            return Regex.IsMatch(value, regex) ? isChronological(value) : false;  
-        }
-
-        // Check that hours given are in chronological order
-        private bool isChronological(string value)
-        {
             string[] splitted = value.Split('-');
             var shiftStart = convertToTimeSpan(splitted[0]);
             var shiftEnd = convertToTimeSpan(splitted[1]);
-            return TimeSpan.Compare(shiftStart, shiftEnd) <0 ? overTime(shiftStart,shiftEnd): false;
+            var regex = ("^([01]?[0-9]|2[0-3]):([0-5][0-9])-([01]?[0-9]|2[0-3]):([0-5][0-9])$");
+            return (isChronological(shiftStart,shiftEnd) && isOverTime(shiftStart, shiftEnd) && Regex.IsMatch(value, regex));
+        }
+
+        // Check that hours given are in chronological order
+        private bool isChronological(TimeSpan shiftStart, TimeSpan shiftEnd)
+        {
+
+            return (TimeSpan.Compare(shiftStart, shiftEnd) < 0); 
         }
 
         // Check that shift doesn't exeed 16 hours
-        private bool overTime(TimeSpan shiftStart, TimeSpan shiftEnd)
+        private bool isOverTime(TimeSpan shiftStart, TimeSpan shiftEnd)
         {
-
+            var SIXTEEN_HOURS_INMILLIS = 57600000;
             var duration = shiftEnd - shiftStart;
-            return duration.TotalMilliseconds <= 57600000; // 16Hours and not a single millisecond more
+            return duration.TotalMilliseconds <= SIXTEEN_HOURS_INMILLIS; 
         }
 
 
         // Get the shift in decimals
         public Double getShift()
         {
-            string[] splitted = _clockedShift.Split('-');
+            var ClockedShift = _clockedShift.ToString();
+            string[] splitted = ClockedShift.Split('-');
             var shiftStart = convertToTimeSpan(splitted[0]);
             var shiftEnd = convertToTimeSpan(splitted[1]);
             var duration = shiftEnd - shiftStart;
