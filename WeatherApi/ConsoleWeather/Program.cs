@@ -6,7 +6,11 @@ namespace ConsoleWeather
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Location city = new Location();
+            WeatherStackApi weatherapi = new WeatherStackApi();
+            CUI cui = new CUI(city,weatherapi);
+            cui.Start();
+        
         }
     }
 }
