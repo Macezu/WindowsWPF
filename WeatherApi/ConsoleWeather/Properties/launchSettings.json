@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ConsoleWeather": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "APIKEY": "?access_key=3461211e53c1a94f6401ff5773967c52"
+      }
+    }
+  }
+}

@@ -1,18 +1,17 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ConsoleWeather.Validators
 {
+    // FluentValidation Framework Initialized
     class CityValidator : AbstractValidator<Location>
     {
         public CityValidator()
         {
-            RuleFor(location => location.CityName).NotEmpty();
-            RuleFor(location => location.CityName).MinimumLength(2);
+            RuleFor(location => location.Name).NotEmpty();
+            RuleFor(location => location.Name).Length(2,30);
         }
+
+        //Possibility to add other validators in the future
     }
 }
